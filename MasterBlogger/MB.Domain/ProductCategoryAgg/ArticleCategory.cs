@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MB.Domain.ProductCategoryAgg
 {
-    public class ProductCategory
+    public class ArticleCategory
     {
         public int Id { get; private set; }
         public string Title { get;private set; }
         public DateTime CreationDate { get;private set; }
         public bool IsDeleted { get;private set; }
 
-        public ProductCategory(string title)
+        public ArticleCategory(string title)
         {
             Title = title;
             CreationDate = DateTime.Now;
