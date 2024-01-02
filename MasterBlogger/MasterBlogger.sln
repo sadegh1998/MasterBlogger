@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB.ApplicationContract", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB.InfrastructureEfCore", "MB.InfrastructureEfCore\MB.InfrastructureEfCore.csproj", "{B9AB5D8E-646C-4C6C-B965-D4F5B27BD3AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MB.Presentation.MVCCore", "MB.Presentation.MVCCore\MB.Presentation.MVCCore.csproj", "{A4294E82-8078-475B-B5B0-C81902594404}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B9AB5D8E-646C-4C6C-B965-D4F5B27BD3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9AB5D8E-646C-4C6C-B965-D4F5B27BD3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9AB5D8E-646C-4C6C-B965-D4F5B27BD3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4294E82-8078-475B-B5B0-C81902594404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4294E82-8078-475B-B5B0-C81902594404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4294E82-8078-475B-B5B0-C81902594404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4294E82-8078-475B-B5B0-C81902594404}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
