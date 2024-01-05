@@ -18,6 +18,14 @@ namespace MB.Application
             _articleCategoryRepository = articleCategoryRepository;
         }
 
+        public void Active(int id)
+        {
+            var articleCategory = _articleCategoryRepository.Get(id);
+            articleCategory.Activated();
+            _articleCategoryRepository.Save();
+            
+        }
+
         public void Create(CreateArticleCategoryViewModel command)
         {
             var articleCategory = new ArticleCategory(command.Title);
@@ -45,6 +53,14 @@ namespace MB.Application
                 });
             }
             return result;
+
+        }
+
+        public void Remove(int id)
+        {
+            var articleCategory = _articleCategoryRepository.Get(id);
+            articleCategory.Remove();
+            _articleCategoryRepository.Save();
 
         }
 

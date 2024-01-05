@@ -23,6 +23,14 @@ namespace MB.Domain.ProductCategoryAgg
         {
             Title = title;
         }
+        public void Remove()
+        {
+            IsDeleted = true;
+        }
+        public void Activated()
+        {
+            IsDeleted = false;
+        }
     }
 
 }

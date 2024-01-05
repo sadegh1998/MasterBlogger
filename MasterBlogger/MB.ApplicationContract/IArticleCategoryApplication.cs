@@ -13,5 +13,7 @@ namespace MB.ApplicationContract
         void Create(CreateArticleCategoryViewModel command);
         void Rename(RenameArticleCategory command);
         RenameArticleCategory Get(int id);
+        void Remove(int id);
+        void Active(int id);
     }
 }

@@ -20,5 +20,16 @@ namespace MB.Presentation.MVCCore.Areas.Administrator.Pages.ArticleCategoryManag
         {
             ArticleCategories = _articleCategoryApplication.List();
         }
+        public RedirectToPageResult OnPostActivate(int Id)
+        {
+            _articleCategoryApplication.Active(Id);
+            return RedirectToPage("./List");
+        }
+        public RedirectToPageResult OnPostRemove(int Id)
+        {
+            _articleCategoryApplication.Remove(Id);
+            return RedirectToPage("./List");
+
+        }
     }
 }
