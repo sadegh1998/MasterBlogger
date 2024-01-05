@@ -9,13 +9,19 @@ using System.Threading.Tasks;
 
 namespace MB.Application
 {
-    internal class ArticleCategoryApplication : IArticleCategoryApplication
+    public class ArticleCategoryApplication : IArticleCategoryApplication
     {
         private readonly IArticleCategoryRepository _articleCategoryRepository;
 
         public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository)
         {
             _articleCategoryRepository = articleCategoryRepository;
+        }
+
+        public void Create(CreateArticleCategoryViewModel command)
+        {
+            var articleCategory = new ArticleCategory(command.Title);
+            _articleCategoryRepository.Create(articleCategory);
         }
 
         public List<ArticleCategoryViewModel> List()

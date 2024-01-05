@@ -1,3 +1,4 @@
+using MB.InfrastructureCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,7 @@ namespace MB.Presentation.MVCCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Bootstrapper.Config(services,Configuration.GetConnectionString("MasterBloggerDb"));
             services.AddRazorPages();
         }
 
@@ -50,6 +52,7 @@ namespace MB.Presentation.MVCCore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }

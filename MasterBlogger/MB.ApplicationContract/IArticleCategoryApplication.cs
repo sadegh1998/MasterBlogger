@@ -10,5 +10,6 @@ namespace MB.ApplicationContract
     public interface IArticleCategoryApplication
     {
         List<ArticleCategoryViewModel> List();
+        void Create(CreateArticleCategoryViewModel command);
     }
 }
