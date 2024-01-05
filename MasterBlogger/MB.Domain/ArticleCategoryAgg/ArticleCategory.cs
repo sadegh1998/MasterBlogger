@@ -1,6 +1,8 @@
-﻿using MB.Domain.ProductCategoryAgg.Services;
+﻿using MB.Domain.ArticleAgg;
+using MB.Domain.ProductCategoryAgg.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,7 @@ namespace MB.Domain.ProductCategoryAgg
         public string Title { get; private set; }
         public DateTime CreationDate { get; private set; }
         public bool IsDeleted { get; private set; }
-
+        public ICollection<Article> Articles { get; private set; }
         public ArticleCategory(string title,IArticleCategoryValidatorService validator)
         {
             GuardAgainstEmptyTitle(title);
@@ -22,6 +24,7 @@ namespace MB.Domain.ProductCategoryAgg
             Title = title;
             CreationDate = DateTime.Now;
             IsDeleted = false;
+            Articles = new List<Article>();
         }
         public void Rename(string title, IArticleCategoryValidatorService validator)
         {

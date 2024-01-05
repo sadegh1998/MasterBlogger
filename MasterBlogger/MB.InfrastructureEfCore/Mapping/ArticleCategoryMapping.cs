@@ -18,6 +18,7 @@ namespace MB.InfrastructureEfCore.Mapping
             builder.Property(c => c.CreationDate);
             builder.Property(c => c.IsDeleted);
 
+            builder.HasMany(x=>x.Articles).WithOne(x=>x.ArticleCategory).HasForeignKey(x=>x.ArticleCategoryId);
         }
     }
 }
