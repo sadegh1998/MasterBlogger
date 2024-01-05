@@ -1,6 +1,7 @@
 ﻿using MB.ApplicationContract;
 using MB.ApplicationContract.ArticleCategory;
 using MB.Domain.ProductCategoryAgg;
+using MB.Domain.ProductCategoryAgg.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace MB.Application
     public class ArticleCategoryApplication : IArticleCategoryApplication
     {
         private readonly IArticleCategoryRepository _articleCategoryRepository;
+        private readonly IArticleCategoryValidatorService _articleCategoryValidatorService;
 
-        public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository)
+        public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository,IArticleCategoryValidatorService articleCategoryValidatorService)
         {
             _articleCategoryRepository = articleCategoryRepository;
+            _articleCategoryValidatorService = articleCategoryValidatorService;
         }
 
         public void Active(int id)
@@ -28,7 +31,7 @@ namespace MB.Application
 
         public void Create(CreateArticleCategoryViewModel command)
         {
-            var articleCategory = new ArticleCategory(command.Title);
+            var articleCategory = new ArticleCategory(command.Title, _articleCategoryValidatorService);
             _articleCategoryRepository.Create(articleCategory);
         }
 
@@ -67,7 +70,7 @@ namespace MB.Application
         public void Rename(RenameArticleCategory command)
         {
             var articleCategory = _articleCategoryRepository.Get(command.Id);
-            articleCategory.Rename(command.Title);
+            articleCategory.Rename(command.Title, _articleCategoryValidatorService);
             _articleCategoryRepository.Save();
         }
     }

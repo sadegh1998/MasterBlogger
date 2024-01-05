@@ -12,5 +12,6 @@ namespace MB.Domain.ProductCategoryAgg
         List<ArticleCategory> GetAll();
         ArticleCategory Get(int id);
         void Save();
+        bool Exsists(string title);
     }
 }
