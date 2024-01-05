@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "MB.ApplicationContract/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/MB.ApplicationContract.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MB.ApplicationContract.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "MB.ApplicationContract/1.0.0": {
+      "type": "project",
+      "path": "../MB.ApplicationContract/MB.ApplicationContract.csproj",
+      "msbuildProject": "../MB.ApplicationContract/MB.ApplicationContract.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "MB.ApplicationContract >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\sadegh\\.nuget\\packages\\": {},
@@ -40,7 +59,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\.Net Core Project\\MasterBlogger\\MasterBlogger\\MB.ApplicationContract\\MB.ApplicationContract.csproj": {
+              "projectPath": "F:\\.Net Core Project\\MasterBlogger\\MasterBlogger\\MB.ApplicationContract\\MB.ApplicationContract.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -11,11 +11,12 @@ namespace MB.Domain.ProductCategoryAgg
 {
     public class ArticleCategory
     {
-        public int Id { get; private set; }
+        public long Id { get; private set; }
         public string Title { get; private set; }
         public DateTime CreationDate { get; private set; }
         public bool IsDeleted { get; private set; }
         public ICollection<Article> Articles { get; private set; }
+        protected ArticleCategory() { }
         public ArticleCategory(string title,IArticleCategoryValidatorService validator)
         {
             GuardAgainstEmptyTitle(title);

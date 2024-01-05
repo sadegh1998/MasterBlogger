@@ -10,7 +10,7 @@ namespace MB.Domain.ProductCategoryAgg
     {
         void Create(ArticleCategory entity);
         List<ArticleCategory> GetAll();
-        ArticleCategory Get(int id);
+        ArticleCategory Get(long id);
         void Save();
         bool Exsists(string title);
     }

@@ -27,7 +27,7 @@ namespace MB.InfrastructureEfCore.Repositories
             return _context.ArticleCategories.Any(x => x.Title == title);
         }
 
-        public ArticleCategory Get(int id)
+        public ArticleCategory Get(long id)
         {
             return _context.ArticleCategories.FirstOrDefault(c=>c.Id == id);
         }

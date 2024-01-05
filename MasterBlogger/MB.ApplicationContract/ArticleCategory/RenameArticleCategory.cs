@@ -8,6 +8,6 @@ namespace MB.ApplicationContract.ArticleCategory
 {
     public class RenameArticleCategory : CreateArticleCategoryViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
     }
 }

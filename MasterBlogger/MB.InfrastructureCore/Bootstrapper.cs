@@ -5,6 +5,9 @@ using MB.Application;
 using MB.InfrastructureEfCore.Repositories;
 using MB.InfrastructureEfCore;
 using Microsoft.EntityFrameworkCore;
+using MB.ApplicationContract.Article;
+using MB.Domain.ArticleAgg;
+using MB.Domain.ProductCategoryAgg.Services;
 
 namespace MB.InfrastructureCore
 {
@@ -14,7 +17,9 @@ namespace MB.InfrastructureCore
         {
             services.AddTransient<IArticleCategoryApplication, ArticleCategoryApplication>();
             services.AddTransient<IArticleCategoryRepository, ArticleCategoryRepository>();
-
+            services.AddTransient<IArticleApplication, ArticleApplication>();
+            services.AddTransient<IArticleRepository, ArticleRepository>();
+            services.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
             services.AddDbContext<MasterBloggerContext>(options=>options.UseSqlServer(connectionString));
         }
     }
