@@ -11,5 +11,7 @@ namespace MB.ApplicationContract
     {
         List<ArticleCategoryViewModel> List();
         void Create(CreateArticleCategoryViewModel command);
+        void Rename(RenameArticleCategory command);
+        RenameArticleCategory Get(int id);
     }
 }

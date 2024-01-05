@@ -24,21 +24,35 @@ namespace MB.Application
             _articleCategoryRepository.Create(articleCategory);
         }
 
+        public RenameArticleCategory Get(int id)
+        {
+            var articleCategory = _articleCategoryRepository.Get(id);
+            return new RenameArticleCategory { Title = articleCategory.Title, Id = articleCategory.Id };
+        }
+
         public List<ArticleCategoryViewModel> List()
         {
             var articleCategories = _articleCategoryRepository.GetAll();
             var result = new List<ArticleCategoryViewModel>();
             foreach (var item in articleCategories)
             {
-                result.Add(new ArticleCategoryViewModel { 
-                Id = item.Id,
-                Title = item.Title,
-                CreationDate = item.CreationDate.ToString() , 
-                IsDeleted = item.IsDeleted
+                result.Add(new ArticleCategoryViewModel
+                {
+                    Id = item.Id,
+                    Title = item.Title,
+                    CreationDate = item.CreationDate.ToString(),
+                    IsDeleted = item.IsDeleted
                 });
             }
             return result;
 
+        }
+
+        public void Rename(RenameArticleCategory command)
+        {
+            var articleCategory = _articleCategoryRepository.Get(command.Id);
+            articleCategory.Rename(command.Title);
+            _articleCategoryRepository.Save();
         }
     }
 }

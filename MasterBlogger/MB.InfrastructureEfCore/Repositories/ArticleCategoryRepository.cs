@@ -19,12 +19,22 @@ namespace MB.InfrastructureEfCore.Repositories
         public void Create(ArticleCategory entity)
         {
             _context.ArticleCategories.Add(entity);
-            _context.SaveChanges();
+            Save();
+        }
+
+        public ArticleCategory Get(int id)
+        {
+            return _context.ArticleCategories.FirstOrDefault(c=>c.Id == id);
         }
 
         public List<ArticleCategory> GetAll()
         {
             return _context.ArticleCategories.OrderByDescending(c=>c.Id).ToList();
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
         }
     }
 }
