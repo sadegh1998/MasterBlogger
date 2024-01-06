@@ -1,0 +1,56 @@
+﻿@page
+@model MB.Presentation.MVCCore.Areas.Administrator.Pages.ArticleManagement.CreateModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Create New Article</h2>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Title" class="control-label">Title:</label>
+                            <input name="Title" id="Title" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="ShortDescription" class="control-label">ShortDescription:</label>
+                            <textarea name="ShortDescription" id="ShortDescription" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Image" class="control-label">Image:</label>
+                            <input name="Image" id="Image" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Content" class="control-label">Content:</label>
+                            <textarea name="Content" id="Content" class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <select asp-items="Model.ArticleCategorySelectedList" name="ArticleCategoryId" id="ArticleCategoryId" class="form-control">
+                                <option value="0">Select Article Category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        <a class="btn btn-dark" asp-page="./List" asp-area="Administrator">Back to list</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

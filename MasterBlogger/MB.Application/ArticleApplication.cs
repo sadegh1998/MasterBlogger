@@ -19,7 +19,8 @@ namespace MB.Application
 
         public void Create(CreateArticle command)
         {
-            throw new NotImplementedException();
+            var article = new Article(command.Title, command.ShortDescription,command.Image, command.Content, command.ArticleCategoryId);
+            _articleRepository.Add(article);
         }
 
         public List<ArticleViewModel> GetAll()

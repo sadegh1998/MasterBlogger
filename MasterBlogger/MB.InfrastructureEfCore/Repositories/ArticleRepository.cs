@@ -17,6 +17,13 @@ namespace MB.InfrastructureEfCore.Repositories
         {
             _context = context;
         }
+
+        public void Add(Article command)
+        {
+            _context.Add(command);
+            Save();
+        }
+
         public List<ArticleViewModel> GetList()
         {
             return _context.Articles.Include(c => c.ArticleCategory).Select(x=> new ArticleViewModel
@@ -27,6 +34,11 @@ namespace MB.InfrastructureEfCore.Repositories
                 IsDeleted = x.IsDeleted ,
                 ArticleCategory = x.ArticleCategory.Title
             }).ToList();
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
         }
     }
 }
