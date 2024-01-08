@@ -18,10 +18,31 @@ namespace MB.InfrastructureEfCore.Repositories
             _context = context;
         }
 
+        public void Active(long Id)
+        {
+            var article = _context.Articles.FirstOrDefault(x => x.Id == Id);
+            article.Activate();
+            Save();
+        }
+
         public void Add(Article command)
         {
             _context.Add(command);
             Save();
+        }
+
+        public void Delete(long Id)
+        {
+            var article = _context.Articles.FirstOrDefault(x => x.Id == Id);
+            article.Remove();
+            Save();
+        }
+
+        
+
+        public Article Get(long Id)
+        {
+            return _context.Articles.FirstOrDefault(c=>c.Id == Id);
         }
 
         public List<ArticleViewModel> GetList()
