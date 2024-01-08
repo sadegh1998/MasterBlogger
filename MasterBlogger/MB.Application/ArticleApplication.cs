@@ -20,6 +20,7 @@ namespace MB.Application
         public void Active(long id)
         {
             _articleRepository.Active(id);
+            _articleRepository.Save();
         }
 
         public void Create(CreateArticle command)
@@ -31,6 +32,7 @@ namespace MB.Application
         public void Delete(long id)
         {
             _articleRepository.Delete(id);
+            _articleRepository.Save();
         }
 
         public void Edit(EditArticle command)
