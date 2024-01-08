@@ -16,5 +16,6 @@ namespace MB.Domain.ArticleAgg
         void Delete(long Id);   
         void Active(long Id);
         void Save();
+        bool Exsits(string title);
     }
 }

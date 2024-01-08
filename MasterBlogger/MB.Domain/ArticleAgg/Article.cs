@@ -1,6 +1,8 @@
-﻿using MB.Domain.ProductCategoryAgg;
+﻿using MB.Domain.ArticleAgg.Services;
+using MB.Domain.ProductCategoryAgg;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +20,16 @@ namespace MB.Domain.ArticleAgg
         public bool IsDeleted { get; private set; }
         public long ArticleCategoryId { get; private set; }
         public ArticleCategory ArticleCategory { get; private set; }
-
-        public Article(string title, string shortDescription, string image, string content, long articleCategoryId)
+        protected Article()
         {
+                
+        }
+
+        public Article(string title, string shortDescription, string image, string content, long articleCategoryId,IArticleValidatorService validatorService)
+        {
+            Validate(title, articleCategoryId);
+            validatorService.CheckThatThisRecordAlreadyExsit(title);
+
             Title = title;
             ShortDescription = shortDescription;
             Image = image;
@@ -29,8 +38,11 @@ namespace MB.Domain.ArticleAgg
             IsDeleted = false;
             CreationDate = DateTime.Now;
         }
-        public void Edit(string title, string shortDescription, string image, string content, long articleCategoryId)
+        public void Edit(string title, string shortDescription, string image, string content, long articleCategoryId, IArticleValidatorService validatorService)
         {
+            Validate(title, articleCategoryId);
+            validatorService.CheckThatThisRecordAlreadyExsit(title);
+
             Title = title;
             ShortDescription = shortDescription;
             Image = image;
@@ -44,6 +56,18 @@ namespace MB.Domain.ArticleAgg
         public void Activate()
         {
             IsDeleted = false;
+        }
+        public static void Validate(string title , long articleCategoryId)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                throw new ArgumentNullException();
+            }
+
+            if(articleCategoryId == 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

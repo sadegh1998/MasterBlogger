@@ -38,7 +38,10 @@ namespace MB.InfrastructureEfCore.Repositories
             Save();
         }
 
-        
+        public bool Exsits(string title)
+        {
+           return _context.Articles.Any(x => x.Title == title);
+        }
 
         public Article Get(long Id)
         {
