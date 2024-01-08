@@ -1,0 +1,90 @@
+﻿@page "{Id:long}"
+@model ArticleDetailsModel
+@{
+    ViewData["Title"] = "ArticleDetails";
+}
+
+<main class="post blog-post col-lg-12">
+    <div class="container">
+        <div class="post-single">
+            <div class="post-thumbnail">
+                <img src="@Model.Article.Image" alt="@Model.Article.Title" title="@Model.Article.Title" class="img-fluid">
+            </div>
+            <div class="post-details">
+                <div class="post-meta d-flex justify-content-between">
+                    <div class="category">
+                        <a href="#">@Model.Article.ArticleCategory</a>
+                    </div>
+                </div>
+                <h1>
+                    @Model.Article.Title
+                    <a href="#">
+                        <i class="fa fa-bookmark-o"></i>
+                    </a>
+                </h1>
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="date">
+                            <i class="icon-clock"></i> @Model.Article.CreationDate</div>
+                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                    </div>
+                </div>
+                <div class="post-body">
+                    <p>
+                        @Model.Article.ShortDescription
+                    </p>
+                    @Model.Article.Content
+                </div>
+
+@*
+                <div class="post-comments">
+                    <header>
+                        <h3 class="h6">Post Comments<span class="no-of-comments">(@Model.Article.CommentsCount)</span></h3>
+                    </header>
+                    @foreach (var comment in Model.Article.Comments)
+                    {
+                        <div class="comment">
+                            <div class="comment-header d-flex justify-content-between">
+                                <div class="user d-flex align-items-center">
+                                    <div class="image">
+                                        <img src="~/img/user.svg" alt="..." class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="title">
+                                        <strong>@comment.Name</strong><span class="date">@comment.CreationDate</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment-body">
+                                <p>@comment.Message</p>
+                            </div>
+                        </div>
+                    }
+
+                </div>*@
+
+                <div class="add-comment">
+                    <header>
+                        <h3 class="h6">Leave a reply</h3>
+                    </header>
+                    <form class="commenting-form" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" name="Name" id="Name" placeholder="Name" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" name="Email" id="Email" placeholder="Email Address (will not be published)" class="form-control">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea name="Message" id="Message" placeholder="Type your comment" class="form-control"></textarea>
+                            </div>
+                            <input type="hidden" name="ArticleId" value="@Model.Article.Id"/>
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-secondary">Submit Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

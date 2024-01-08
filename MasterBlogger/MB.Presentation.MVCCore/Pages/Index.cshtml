@@ -1,10 +1,41 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<main class="posts-listing col-lg-12">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var article in Model.Articles)
+            {
+                <div class="post col-xl-6">
+                    <div class="post-thumbnail">
+                        <a asp-page="/ArticleDetails" asp-route-id="@article.Id">
+                            <img src="@article.Image" alt="@article.Title" title="@article.Title" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="post-details">
+                        <div class="post-meta d-flex justify-content-between">
+                            <div class="date meta-last">@article.CreationDate</div>
+                            <div class="category">
+                                <a asp-page="/ArticleDetails" asp-route-id="@article.Id">@article.ArticleCategory</a>
+                            </div>
+                        </div>
+                        <a asp-page="/ArticleDetails" asp-route-id="@article.Id">
+                            <h3 class="h4">@article.Title</h3>
+                        </a>
+                        <p class="text-muted">
+                            @article.ShortDescription
+                        </p>
+                        <footer class="post-footer d-flex align-items-center">
+                            <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        </footer>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</main>

@@ -38,10 +38,9 @@ namespace MB.Domain.ArticleAgg
             IsDeleted = false;
             CreationDate = DateTime.Now;
         }
-        public void Edit(string title, string shortDescription, string image, string content, long articleCategoryId, IArticleValidatorService validatorService)
+        public void Edit(string title, string shortDescription, string image, string content, long articleCategoryId)
         {
             Validate(title, articleCategoryId);
-            validatorService.CheckThatThisRecordAlreadyExsit(title);
 
             Title = title;
             ShortDescription = shortDescription;

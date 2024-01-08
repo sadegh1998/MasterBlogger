@@ -9,6 +9,7 @@ using MB.ApplicationContract.Article;
 using MB.Domain.ArticleAgg;
 using MB.Domain.ProductCategoryAgg.Services;
 using MB.Domain.ArticleAgg.Services;
+using MB.Infrastructure.Query;
 
 namespace MB.InfrastructureCore
 {
@@ -22,6 +23,7 @@ namespace MB.InfrastructureCore
             services.AddTransient<IArticleRepository, ArticleRepository>();
             services.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
             services.AddTransient<IArticleValidatorService, ArticleValidatorService>();
+            services.AddTransient<IArticleQuery, ArticleQuery>();
             services.AddDbContext<MasterBloggerContext>(options=>options.UseSqlServer(connectionString));
         }
     }

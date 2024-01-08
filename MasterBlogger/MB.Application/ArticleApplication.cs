@@ -41,7 +41,7 @@ namespace MB.Application
         public void Edit(EditArticle command)
         {
             var article = _articleRepository.Get(command.Id);
-            article.Edit(command.Title, command.ShortDescription, command.Image, command.Content, command.ArticleCategoryId, _articleValidatorService);
+            article.Edit(command.Title, command.ShortDescription, command.Image, command.Content, command.ArticleCategoryId);
             _articleRepository.Save();
         }
 

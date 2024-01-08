@@ -12,6 +12,7 @@
     <ProjectReference Include="..\MB.ApplicationContract\MB.ApplicationContract.csproj" />
     <ProjectReference Include="..\MB.Application\MB.Application.csproj" />
     <ProjectReference Include="..\MB.Domain\MB.Domain.csproj" />
+    <ProjectReference Include="..\MB.Infrastructure.Query\MB.Infrastructure.Query.csproj" />
     <ProjectReference Include="..\MB.InfrastructureEfCore\MB.InfrastructureEfCore.csproj" />
   </ItemGroup>
 
