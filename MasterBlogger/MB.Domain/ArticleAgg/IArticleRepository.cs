@@ -1,4 +1,5 @@
-﻿using MB.ApplicationContract.Article;
+﻿using _01_Framework.InfrastructureEf;
+using MB.ApplicationContract.Article;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,8 @@ using System.Threading.Tasks;
 
 namespace MB.Domain.ArticleAgg
 {
-    public interface IArticleRepository
+    public interface IArticleRepository : IRepository<long,Article>
     {
         List<ArticleViewModel> GetList();
-        void Add(Article command);
-        Article Get(long Id);
-        void Delete(long Id);   
-        void Active(long Id);
-        void Save();
-        bool Exsits(string title);
     }
 }

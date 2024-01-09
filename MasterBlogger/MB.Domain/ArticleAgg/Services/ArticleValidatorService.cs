@@ -15,7 +15,7 @@ namespace MB.Domain.ArticleAgg.Services
 
         public void CheckThatThisRecordAlreadyExsit(string title)
         {
-            if (_articleRepository.Exsits(title))
+            if (_articleRepository.Exsits(x=>x.Title == title))
             {
                 throw new DuplicatedRecordException("The record already exsits in database");
             }

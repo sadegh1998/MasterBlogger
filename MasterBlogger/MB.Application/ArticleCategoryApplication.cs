@@ -25,7 +25,6 @@ namespace MB.Application
         {
             var articleCategory = _articleCategoryRepository.Get(id);
             articleCategory.Activated();
-            _articleCategoryRepository.Save();
             
         }
 
@@ -44,18 +43,15 @@ namespace MB.Application
         public List<ArticleCategoryViewModel> List()
         {
             var articleCategories = _articleCategoryRepository.GetAll();
-            var result = new List<ArticleCategoryViewModel>();
-            foreach (var item in articleCategories)
+
+            return articleCategories.Select(item => new ArticleCategoryViewModel
             {
-                result.Add(new ArticleCategoryViewModel
-                {
-                    Id = item.Id,
-                    Title = item.Title,
-                    CreationDate = item.CreationDate.ToString(),
-                    IsDeleted = item.IsDeleted
-                });
-            }
-            return result;
+                Id = item.Id,
+                Title = item.Title,
+                CreationDate = item.CreationDate.ToString(),
+                IsDeleted = item.IsDeleted
+            }).OrderByDescending(c=>c.Id).ToList();
+           
 
         }
 
@@ -63,7 +59,6 @@ namespace MB.Application
         {
             var articleCategory = _articleCategoryRepository.Get(id);
             articleCategory.Remove();
-            _articleCategoryRepository.Save();
 
         }
 
@@ -71,7 +66,6 @@ namespace MB.Application
         {
             var articleCategory = _articleCategoryRepository.Get(command.Id);
             articleCategory.Rename(command.Title, _articleCategoryValidatorService);
-            _articleCategoryRepository.Save();
         }
     }
 }

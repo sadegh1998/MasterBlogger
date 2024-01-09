@@ -22,27 +22,26 @@ namespace MB.Application
 
         public void Active(long id)
         {
-            _articleRepository.Active(id);
-            _articleRepository.Save();
+            var article =_articleRepository.Get(id);
+            article.Activate();
         }
 
         public void Create(CreateArticle command)
         {
             var article = new Article(command.Title, command.ShortDescription,command.Image, command.Content, command.ArticleCategoryId,_articleValidatorService);
-            _articleRepository.Add(article);
+            _articleRepository.Create(article);
         }
 
         public void Delete(long id)
         {
-            _articleRepository.Delete(id);
-            _articleRepository.Save();
+            var article = _articleRepository.Get(id);
+            article.Remove();
         }
 
         public void Edit(EditArticle command)
         {
             var article = _articleRepository.Get(command.Id);
             article.Edit(command.Title, command.ShortDescription, command.Image, command.Content, command.ArticleCategoryId);
-            _articleRepository.Save();
         }
 
         public EditArticle Get(long id)

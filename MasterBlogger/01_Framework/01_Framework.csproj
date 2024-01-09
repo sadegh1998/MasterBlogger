@@ -5,4 +5,8 @@
     <RootNamespace>_01_Framework</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+  </ItemGroup>
+
 </Project>
