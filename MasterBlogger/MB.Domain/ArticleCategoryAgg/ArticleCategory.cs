@@ -1,4 +1,5 @@
-﻿using MB.Domain.ArticleAgg;
+﻿using _01_Framework.Domain;
+using MB.Domain.ArticleAgg;
 using MB.Domain.ProductCategoryAgg.Services;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,9 @@ using System.Threading.Tasks;
 
 namespace MB.Domain.ProductCategoryAgg
 {
-    public class ArticleCategory
+    public class ArticleCategory : DomainBase<long>
     {
-        public long Id { get; private set; }
         public string Title { get; private set; }
-        public DateTime CreationDate { get; private set; }
         public bool IsDeleted { get; private set; }
         public ICollection<Article> Articles { get; private set; }
         protected ArticleCategory() { }
@@ -23,7 +22,6 @@ namespace MB.Domain.ProductCategoryAgg
             validator.CheckThatThisRecordAlreadyExsit(title);
 
             Title = title;
-            CreationDate = DateTime.Now;
             IsDeleted = false;
             Articles = new List<Article>();
         }
