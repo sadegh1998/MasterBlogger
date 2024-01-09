@@ -2,6 +2,7 @@
 using MB.ApplicationContract.ArticleCategory;
 using MB.Domain.ProductCategoryAgg;
 using MB.Domain.ProductCategoryAgg.Services;
+using MB.InfrastructureEfCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,24 +15,28 @@ namespace MB.Application
     {
         private readonly IArticleCategoryRepository _articleCategoryRepository;
         private readonly IArticleCategoryValidatorService _articleCategoryValidatorService;
-
-        public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository,IArticleCategoryValidatorService articleCategoryValidatorService)
+        private readonly IUnitOfWork _unitOfWork;
+        public ArticleCategoryApplication(IArticleCategoryRepository articleCategoryRepository,IArticleCategoryValidatorService articleCategoryValidatorService, IUnitOfWork unitOfWork)
         {
             _articleCategoryRepository = articleCategoryRepository;
             _articleCategoryValidatorService = articleCategoryValidatorService;
+            _unitOfWork = unitOfWork;
         }
 
         public void Active(int id)
         {
+            _unitOfWork.BeginTran();
             var articleCategory = _articleCategoryRepository.Get(id);
             articleCategory.Activated();
-            
+            _unitOfWork.CommitTran();
         }
 
         public void Create(CreateArticleCategoryViewModel command)
         {
+            _unitOfWork.BeginTran();
             var articleCategory = new ArticleCategory(command.Title, _articleCategoryValidatorService);
             _articleCategoryRepository.Create(articleCategory);
+            _unitOfWork.CommitTran();
         }
 
         public RenameArticleCategory Get(int id)
@@ -57,15 +62,18 @@ namespace MB.Application
 
         public void Remove(int id)
         {
+            _unitOfWork.BeginTran();
             var articleCategory = _articleCategoryRepository.Get(id);
             articleCategory.Remove();
-
+            _unitOfWork.CommitTran();
         }
 
         public void Rename(RenameArticleCategory command)
         {
+            _unitOfWork.BeginTran();
             var articleCategory = _articleCategoryRepository.Get(command.Id);
             articleCategory.Rename(command.Title, _articleCategoryValidatorService);
+            _unitOfWork.CommitTran();   
         }
     }
 }

@@ -28,6 +28,8 @@ namespace MB.InfrastructureCore
             services.AddTransient<IArticleQuery, ArticleQuery>();
             services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<ICommentApplication, CommentApplication>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
             services.AddDbContext<MasterBloggerContext>(options=>options.UseSqlServer(connectionString));
         }
     }
