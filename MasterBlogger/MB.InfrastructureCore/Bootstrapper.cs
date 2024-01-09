@@ -10,6 +10,8 @@ using MB.Domain.ArticleAgg;
 using MB.Domain.ProductCategoryAgg.Services;
 using MB.Domain.ArticleAgg.Services;
 using MB.Infrastructure.Query;
+using MB.Domain.CommentAgg;
+using MB.ApplicationContract.Comment;
 
 namespace MB.InfrastructureCore
 {
@@ -24,6 +26,8 @@ namespace MB.InfrastructureCore
             services.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
             services.AddTransient<IArticleValidatorService, ArticleValidatorService>();
             services.AddTransient<IArticleQuery, ArticleQuery>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<ICommentApplication, CommentApplication>();
             services.AddDbContext<MasterBloggerContext>(options=>options.UseSqlServer(connectionString));
         }
     }

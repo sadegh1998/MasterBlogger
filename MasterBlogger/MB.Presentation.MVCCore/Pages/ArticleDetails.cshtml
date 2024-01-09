@@ -26,7 +26,7 @@
                     <div class="d-flex align-items-center flex-wrap">
                         <div class="date">
                             <i class="icon-clock"></i> @Model.Article.CreationDate</div>
-                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        <div class="comments meta-last"><i class="icon-comment"></i>@Model.Article.CommentsCount</div>
                     </div>
                 </div>
                 <div class="post-body">
@@ -36,7 +36,7 @@
                     @Model.Article.Content
                 </div>
 
-@*
+
                 <div class="post-comments">
                     <header>
                         <h3 class="h6">Post Comments<span class="no-of-comments">(@Model.Article.CommentsCount)</span></h3>
@@ -60,7 +60,7 @@
                         </div>
                     }
 
-                </div>*@
+                </div>
 
                 <div class="add-comment">
                     <header>
