@@ -1,13 +1,8 @@
 ﻿using _01_Framework.InfrastructureEf;
-using MB.ApplicationContract.Comment;
 using MB.Domain.CommentAgg;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MB.InfrastructureEfCore.Repositories
 {
@@ -20,17 +15,9 @@ namespace MB.InfrastructureEfCore.Repositories
             _context = context;
         }
 
-        public List<CommentViewModel> GetComments()
+        public List<Comment> GetComments()
         {
-            return _context.Comments.Include(x=>x.Article).Select(x=>new CommentViewModel { 
-            Id = x.Id ,
-            Email = x.Email ,
-            Message = x.Message ,
-            Name = x.Name ,
-            Status = x.Status,
-            CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture) ,
-            Article = x.Article.Title
-            }).ToList();
+            return _context.Comments.Include(x=>x.Article).ToList();
         }
 
     }

@@ -3,6 +3,7 @@ using MB.Domain.CommentAgg;
 using MB.InfrastructureEfCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,17 @@ namespace MB.Application
 
         public List<CommentViewModel> GetComments()
         {
-            return _commentRepository.GetComments();
+            var comments =  _commentRepository.GetComments();
+            return comments.Select(x => new CommentViewModel
+            {
+                Id = x.Id,
+                Email = x.Email,
+                Message = x.Message,
+                Name = x.Name,
+                Status = x.Status,
+                CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
+                Article = x.Article.Title
+            }).ToList();
         }
     }
 }

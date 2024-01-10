@@ -1,6 +1,4 @@
-﻿using MB.ApplicationContract.Article;
-using MB.Domain.ProductCategoryAgg.Exceptions;
-using System;
+﻿using MB.Domain.ProductCategoryAgg.Exceptions;
 
 namespace MB.Domain.ArticleAgg.Services
 {
