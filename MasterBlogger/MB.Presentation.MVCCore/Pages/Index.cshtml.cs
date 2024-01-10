@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MB.Infrastructure.Query;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,9 +16,9 @@ namespace MB.Presentation.MVCCore.Pages
             _articleQuery = articleQuery;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Articles = _articleQuery.GetAllArticle();
+            Articles = await _articleQuery.GetAllArticle();
         }
     }
 }

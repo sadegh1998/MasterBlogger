@@ -2,6 +2,7 @@
 using MB.Infrastructure.Query;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace MB.Presentation.MVCCore.Pages
 {
@@ -20,9 +21,9 @@ namespace MB.Presentation.MVCCore.Pages
             _commentApplication = commentApplication;
         }
 
-        public void OnGet(long id)
+        public async Task OnGetAsync(long id)
         {
-            Article = _articleQuery.GetArticle(id);
+            Article = await _articleQuery.GetArticle(id);
         }
         public RedirectToPageResult OnPost(CreateComment command)
         {

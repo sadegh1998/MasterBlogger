@@ -8,7 +8,7 @@ namespace MB.Infrastructure.Query
 {
     public interface IArticleQuery
     {
-        List<ArticleQueryView> GetAllArticle();
-        ArticleQueryView GetArticle(long id);
+         Task<List<ArticleQueryView>> GetAllArticle();
+        Task<ArticleQueryView> GetArticle(long id);
     }
 }

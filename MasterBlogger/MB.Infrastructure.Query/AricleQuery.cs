@@ -19,9 +19,9 @@ namespace MB.Infrastructure.Query
             _context = context;
         }
 
-        public List<ArticleQueryView> GetAllArticle()
+        public async Task<List<ArticleQueryView>> GetAllArticle()
         {
-            return _context.Articles
+            return await _context.Articles
                 .Include(x => x.ArticleCategory)
                 .Include(x=>x.Comments)
                 .Select(x => new ArticleQueryView
@@ -35,12 +35,12 @@ namespace MB.Infrastructure.Query
                 CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
                 CommentsCount = x.Comments.Count(x=>x.Status == Statuses.Confirm)
 
-            }).ToList();
+            }).ToListAsync();
         }
 
-        public ArticleQueryView GetArticle(long id)
+        public async Task<ArticleQueryView> GetArticle(long id)
         {
-            return _context.Articles
+            return await _context.Articles
                 .Include(x => x.ArticleCategory)
                 .Include(x => x.Comments)
                 .Select(x => new ArticleQueryView
@@ -55,7 +55,7 @@ namespace MB.Infrastructure.Query
                 CommentsCount = x.Comments.Count(x=>x.Status == Statuses.Confirm),
                 Comments = MapComment(x.Comments.Where(x => x.Status == Statuses.Confirm))
 
-            }).FirstOrDefault(x => x.Id == id);
+            }).FirstOrDefaultAsync(x => x.Id == id);
         }
         private static List<CommentQueryView> MapComment(IEnumerable<Comment> command) {
             return command.Select(command => new CommentQueryView { 
@@ -65,6 +65,6 @@ namespace MB.Infrastructure.Query
             }).ToList();
         }
 
-
+        
     }
 }
