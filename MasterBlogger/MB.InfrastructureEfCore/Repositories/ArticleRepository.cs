@@ -18,16 +18,9 @@ namespace MB.InfrastructureEfCore.Repositories
         {
             _context = context;
         }   
-        public List<ArticleViewModel> GetList()
+        public List<Article> GetList()
         {
-            return _context.Articles.Include(c => c.ArticleCategory).Select(x=> new ArticleViewModel
-            {
-                Id = x.Id,
-                Title = x.Title,
-                CreationDate = x.CreationDate.ToString(),
-                IsDeleted = x.IsDeleted ,
-                ArticleCategory = x.ArticleCategory.Title
-            }).ToList();
+            return _context.Articles.Include(c => c.ArticleCategory).ToList();
         }
 
     }

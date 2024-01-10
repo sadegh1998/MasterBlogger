@@ -2,6 +2,7 @@
 using MB.Domain.ArticleAgg;
 using MB.Domain.ArticleAgg.Services;
 using MB.InfrastructureEfCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,15 @@ namespace MB.Application
 
         public List<ArticleViewModel> GetAll()
         {
-           return _articleRepository.GetList();
+           var article =  _articleRepository.GetList();
+            return article.Select(x => new ArticleViewModel
+            {
+                Id = x.Id,
+                Title = x.Title,
+                CreationDate = x.CreationDate.ToString(),
+                IsDeleted = x.IsDeleted,
+                ArticleCategory = x.ArticleCategory.Title
+            }).ToList();
         }
     }
 }
