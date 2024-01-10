@@ -527,3 +527,14 @@ FodyWeavers.xsd
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio,aspnetcore
+/MasterBlogger/.vs/MasterBlogger/v17/.suo
+/MasterBlogger/MB.Domain/obj/Debug/net5.0/MB.Domain.AssemblyInfo.cs
+/MasterBlogger/MB.Domain/obj/Debug/net5.0/MB.Domain.AssemblyInfoInputs.cache
+/MasterBlogger/MB.Domain/obj/Debug/net5.0/MB.Domain.assets.cache
+/MasterBlogger/MB.Domain/obj/Debug/net5.0/MB.Domain.csproj.AssemblyReference.cache
+/MasterBlogger/MB.Domain/obj/Debug/net5.0/MB.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/MasterBlogger/MB.Domain/obj/MB.Domain.csproj.nuget.dgspec.json
+/MasterBlogger/MB.Domain/obj/MB.Domain.csproj.nuget.g.props
+/MasterBlogger/MB.Domain/obj/project.assets.json
+/MasterBlogger/MB.Domain/obj/project.nuget.cache
+/.vs/slnx.sqlite
